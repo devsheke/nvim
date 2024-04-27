@@ -6,6 +6,7 @@ vim.g.mapleader = " "
 opt.nu = true
 opt.relativenumber = true
 opt.termguicolors = true
+
 opt.hlsearch = false
 opt.incsearch = true
 opt.scrolloff = 4
