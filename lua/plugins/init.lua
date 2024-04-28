@@ -83,8 +83,13 @@ return {
       return require("configs.cmp")
     end,
     config = function(_, opts)
-      require("cmp").setup(opts)
-      vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#ffffff", fg = "NONE" })
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      local cmp = require('cmp')
+      cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done()
+      )
+      cmp.setup(opts)
     end,
   },
 
@@ -133,6 +138,16 @@ return {
   },
 
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { indent = { char = "▏" } } },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function()
+      return require("configs.gitsigns")
+    end,
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+    end
+  },
 
   {
     "folke/trouble.nvim",
