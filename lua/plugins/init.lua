@@ -98,8 +98,9 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        go = { "goimports-reviser", "golines" },
+        go = { "gofmt", "goimports-reviser", "golines" },
         javascript = { "prettierd" },
+        typescript = { "prettierd" },
         rust = { "rustfmt" },
         bash = { "beautysh" },
       },
@@ -164,11 +165,11 @@ return {
   },
 
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      require("rose-pine")
-      vim.cmd("colorscheme rose-pine")
-    end,
-  },
+      vim.cmd.colorscheme "catppuccin-mocha"
+    end
+  }
 }

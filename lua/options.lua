@@ -3,6 +3,11 @@ local o = vim.o
 
 vim.g.mapleader = " "
 
+vim.opt.shortmess.F = true
+vim.opt.shortmess.W = true
+vim.opt.shortmess.c = true
+vim.opt.shortmess.I = true
+
 opt.nu = true
 opt.relativenumber = true
 opt.termguicolors = true
