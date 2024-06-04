@@ -1,15 +1,17 @@
 local colors = {
-	bg = "#26233a",
 	fg = "#e0def4",
-	yellow = "#f6c177",
-	cyan = "#ebbcba",
+	bg = "#26233a",
 	darkblue = "#9ccfd8",
-	green = "#31748f",
-	orange = "#ff966c",
-	violet = "#3e8fb0",
-	magenta = "#c4a7e7",
-	blue = "#9ccfd8",
+	orange = "#eb6f92",
+	violet = "#c4a7e7",
+	black = "#26233a",
 	red = "#eb6f92",
+	green = "#31748f",
+	yellow = "#f6c177",
+	blue = "#9ccfd8",
+	magenta = "#c4a7e7",
+	cyan = "#ebbcba",
+	white = "#e0def4",
 }
 
 local conditions = {

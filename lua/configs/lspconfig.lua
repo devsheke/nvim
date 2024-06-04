@@ -12,6 +12,7 @@ local servers = {
   "html",
   "jsonls",
   "lua_ls",
+  "nil_ls",
   "rust_analyzer",
   "svelte",
   "tailwindcss",
