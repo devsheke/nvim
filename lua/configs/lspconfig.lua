@@ -13,13 +13,14 @@ local servers = {
 	"jsonls",
 	"lua_ls",
 	"nil_ls",
+	"ocamllsp",
 	"pylsp",
 	"rust_analyzer",
 	"svelte",
 	"tailwindcss",
 	"taplo",
 	"templ",
-	"tsserver",
+	"ts_ls",
 }
 
 local options = {

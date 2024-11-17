@@ -14,6 +14,7 @@ return {
 
 	{
 		"williamboman/mason.nvim",
+		cmd = { "Mason", "MasonUpdate" },
 		build = function()
 			pcall(vim.api.nvim_command, "MasonUpdate")
 		end,
@@ -98,7 +99,7 @@ return {
 				rust = { "rustfmt" },
 				bash = { "beautysh" },
 				nix = { "alejandra" },
-				python = { "black" },
+				python = { "black", "isort" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -161,10 +162,49 @@ return {
 	},
 
 	{
+		"vhyrro/luarocks.nvim",
+		opts = {
+			rocks = { "lua-utils.nvim", "pathlib.nvim" },
+		},
+		priority = 1000,
+		config = true,
+	},
+
+	{
+		"nvim-neorg/neorg",
+		lazy = true,
+		version = "*",
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = { config = { icon_preset = "diamond" } },
+					["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+					["core.integrations.nvim-cmp"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								notes = "~/Documents/Notes",
+							},
+							default_workspace = "notes",
+						},
+					},
+				},
+			})
+
+			vim.wo.foldlevel = 99
+			vim.wo.conceallevel = 2
+		end,
+	},
+
+	{
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			vim.cmd("colorscheme rose-pine")
+			require("rose-pine").setup({
+				variant = "dawn",
+			})
+			vim.cmd("colorscheme rose-pine-dawn")
 		end,
 	},
 }
