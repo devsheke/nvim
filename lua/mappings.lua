@@ -8,24 +8,24 @@ end, { desc = "Format current buffer" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line up" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line down" })
 
-map("n", "J", "mzJ`z", { desc = "" })
-map("n", "<C-u>", "<C-u>zz", { desc = "" })
-map("n", "<C-d>", "<C-d>zz", { desc = "" })
-map("n", "n", "nzzzv", { desc = "" })
-map("n", "N", "Nzzzv", { desc = "" })
+map("n", "J", "mzJ`z", { desc = "Fold lines upwards" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in the middle the screen while moving up" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in the middle the screen while moving down" })
+map("n", "n", "nzzzv", { desc = "Keep cursor in the middle the screen while moving down markers" })
+map("n", "N", "Nzzzv", { desc = "Keep cursor in the middle the screen while moving up markers" })
 
 map("x", "<leader>p", [["_dP]], { desc = "Paste and send to void register" })
 map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete and send to void register" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "" })
-map("n", "<C-l>", "<C-w>l", { desc = "" })
-map("n", "<C-j>", "<C-w>j", { desc = "" })
-map("n", "<C-k>", "<C-w>k", { desc = "" })
+map("n", "<C-h>", "<C-w>h", { desc = "Focus pane on the left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Focus pane on the right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Focus pane below" })
+map("n", "<C-k>", "<C-w>k", { desc = "Focus pane above" })
 
-map("i", "<C-a>", "<Left>", { desc = "" })
-map("i", "<C-d>", "<Right>", { desc = "" })
-map("i", "<C-s>", "<Down>", { desc = "" })
-map("i", "<C-w>", "<Up>", { desc = "" })
+map("i", "<C-a>", "<Left>", { desc = "Move cursor left in insert mode" })
+map("i", "<C-d>", "<Right>", { desc = "Move cursor right in insert mode" })
+map("i", "<C-s>", "<Down>", { desc = "Move cursor down in insert mode" })
+map("i", "<C-w>", "<Up>", { desc = "Move cursor up in insert mode" })
 
 map(
 	"n",
@@ -84,29 +84,32 @@ end, { desc = "Toggle Trouble quickfix" })
 
 -- Comment bindings
 local api = require("Comment.api")
+map("n", "<leader>\\", api.toggle.linewise.current, { desc = "Toggle comment on current line (linewise)" })
 
--- toggle current line (linewise)
-map("n", "<leader>\\", api.toggle.linewise.current)
-
--- toggle current line (blockwise)
-map("n", "<C-\\>", api.toggle.blockwise.current)
+map("n", "<C-\\>", api.toggle.blockwise.current, { desc = "Toggle comment on current line (blockwise)" })
 
 local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
 
--- toggle lines (linewise) with dot-repeat support
-vim.keymap.set("n", "<leader>c", api.call("toggle.linewise", "g@"), { expr = true })
+vim.keymap.set(
+	"n",
+	"<leader>c",
+	api.call("toggle.linewise", "g@"),
+	{ expr = true, desc = "Toggle comments (linewise) with dot-repeat support" }
+)
 
--- toggle lines (blockwise) with dot-repeat support
-vim.keymap.set("n", "<leader>cc", api.call("toggle.blockwise", "g@"), { expr = true })
+vim.keymap.set(
+	"n",
+	"<leader>cc",
+	api.call("toggle.blockwise", "g@"),
+	{ expr = true, desc = "Toggle comments (blockwise) with dot-repeat support" }
+)
 
--- toggle selection (linewise)
 map("x", "<leader>c", function()
 	vim.api.nvim_feedkeys(esc, "nx", false)
 	api.toggle.linewise(vim.fn.visualmode())
-end)
+end, { desc = "Toggle comments (linewise) with dot-repeat support" })
 
--- toggle selection (blockwise)
 map("x", "<leader>cc", function()
 	vim.api.nvim_feedkeys(esc, "nx", false)
 	api.toggle.blockwise(vim.fn.visualmode())
-end)
+end, { desc = "Toggle comments (blockwise) with dot-repeat support" })
