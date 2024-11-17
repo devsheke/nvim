@@ -1,7 +1,9 @@
+local buf_open_events = { "BufReadPost", "BufNewFile" }
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPost", "BufNewFile" },
+		event = buf_open_events,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
 		opts = function()
@@ -9,24 +11,6 @@ return {
 		end,
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
-
-	{
-		"williamboman/mason.nvim",
-		cmd = { "Mason", "MasonUpdate" },
-		build = function()
-			pcall(vim.api.nvim_command, "MasonUpdate")
-		end,
-		config = function()
-			require("mason").setup()
-		end,
-	},
-
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup()
 		end,
 	},
 
@@ -135,10 +119,16 @@ return {
 		end,
 	},
 
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { indent = { char = "▏" } } },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = buf_open_events,
+		main = "ibl",
+		opts = { indent = { char = "▏" } },
+	},
 
 	{
 		"lewis6991/gitsigns.nvim",
+		event = buf_open_events,
 		opts = function()
 			return require("configs.gitsigns")
 		end,
@@ -149,6 +139,7 @@ return {
 
 	{
 		"folke/trouble.nvim",
+		cmd = "Trouble",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 		config = function(_, opts)
@@ -158,7 +149,7 @@ return {
 
 	{
 		"numToStr/Comment.nvim",
-		lazy = false,
+		event = buf_open_events,
 	},
 
 	{
@@ -172,7 +163,7 @@ return {
 
 	{
 		"nvim-neorg/neorg",
-		lazy = true,
+		cmd = "Neorg",
 		version = "*",
 		config = function()
 			require("neorg").setup({
