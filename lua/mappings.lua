@@ -58,29 +58,27 @@ map("n", "<leader>gs", telescope.git_status, { desc = "Display git status" })
 map("n", "<leader>gst", telescope.git_stash, { desc = "List stash items" })
 
 -- trouble bindings
-map("n", "<leader>xx", function()
-	require("trouble").toggle()
-end, { desc = "Toggle Trouble" })
+map(
+	"n",
+	"<leader>xx",
+	"<cmd>Trouble diagnostics toggle<cr>",
+	{ desc = "Toggle Trouble diagnostics for current workspace" }
+)
 
-map("n", "<leader>xw", function()
-	require("trouble").toggle("workspace_diagnostics")
-end, { desc = "Toggle Trouble workspace diagnostics" })
+map(
+	"n",
+	"<leader>xf",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+	{ desc = "Toggle Trouble diagnostics for current buffer" }
+)
 
-map("n", "<leader>xd", function()
-	require("trouble").toggle("document_diagnostics")
-end, { desc = "Toggle Trouble diagnostics" })
-
-map("n", "<leader>xq", function()
-	require("trouble").toggle("quickfix")
-end, { desc = "Toggle Trouble quickfix" })
+map("n", "<leader>xq", "<cmd>Trouble qflist toggle", { desc = "Toggle Trouble quickfix list" })
 
 map("n", "<leader>xl", function()
 	require("trouble").toggle("loclist")
 end, { desc = "Toggle Trouble loclist" })
 
-map("n", "gR", function()
-	require("trouble").toggle("lsp_references")
-end, { desc = "Toggle Trouble quickfix" })
+map("n", "gR", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "Toggle Trouble lsp references" })
 
 -- Comment bindings
 local api = require("Comment.api")
