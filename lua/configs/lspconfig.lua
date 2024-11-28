@@ -90,6 +90,17 @@ options.defaults = function()
 	end
 
 	for _, server in ipairs(servers) do
+		if server == "rust_analyzer" then
+			for _, method in pairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
+				local default_diagnostic_handler = vim.lsp.handlers[method]
+				vim.lsp.handlers[method] = function(err, result, context, config)
+					if err ~= nil and err.code == -32802 then
+						return
+					end
+					return default_diagnostic_handler(err, result, context, config)
+				end
+			end
+		end
 		lspconfig[server].setup({
 			on_attach = options.on_attach,
 			capabilities = options.capabilities,
