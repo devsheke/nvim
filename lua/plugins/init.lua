@@ -79,12 +79,15 @@ return {
 				lua = { "stylua" },
 				go = { "gofmt", "goimports-reviser", "golines" },
 				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
 				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
 				rust = { "rustfmt" },
 				bash = { "beautysh" },
 				nix = { "alejandra" },
 				python = { "black", "isort" },
 				swift = { "swift_format" },
+				templ = { "templ", "rustywind" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
@@ -194,7 +197,7 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
-				variant = "dawn",
+				variant = "moon",
 			})
 			vim.cmd("colorscheme rose-pine")
 		end,
