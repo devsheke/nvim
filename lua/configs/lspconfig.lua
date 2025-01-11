@@ -21,6 +21,7 @@ local servers = {
 	"taplo",
 	"templ",
 	"ts_ls",
+  "zls"
 }
 
 local options = {
