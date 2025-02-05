@@ -1,0 +1,1 @@
+require ("sheke.config.lazy")
