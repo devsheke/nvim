@@ -1,1 +1,1 @@
-require ("sheke.config.lazy")
+require ("sheke.config")
