@@ -39,6 +39,8 @@ return {
 
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
+	{ "onsails/lspkind.nvim" },
+
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -159,6 +161,15 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function(_, _)
 			require("trouble").setup({ focus = true })
+		end,
+	},
+
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
 		end,
 	},
 }
