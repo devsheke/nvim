@@ -25,5 +25,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "sheke.plugins" } }, {
 	checker = {
 		enabled = true,
+		notify = false,
 	},
 })
