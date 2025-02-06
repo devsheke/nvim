@@ -16,6 +16,7 @@ return {
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = buf_open_events,
@@ -133,5 +134,14 @@ return {
 		---@type snacks.Config
 		opts = require("sheke.plugins.config.snacks").opts,
 		keys = require("sheke.plugins.config.snacks").keys,
+	},
+
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function(_, _)
+			require("trouble").setup({ focus = true })
+		end,
 	},
 }
