@@ -10,7 +10,7 @@ local on_attach = function(_, bufnr)
 
 	map("n", "gd", vim.lsp.buf.declaration, opts("go to declaration"))
 	map("n", "gd", vim.lsp.buf.definition, opts("go to definition"))
-	map("n", "k", vim.lsp.buf.hover, opts("hover information"))
+	map("n", "K", vim.lsp.buf.hover, opts("hover information"))
 	map("n", "gi", vim.lsp.buf.implementation, opts("go to implementation"))
 	map("n", "<leader>sh", vim.lsp.buf.signature_help, opts("show signature help"))
 	map("n", "<leader>rn", vim.lsp.buf.rename, opts("rename symbol"))
