@@ -6,6 +6,13 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
+      require("catppuccin").setup({
+        integrations = {
+        cmp = true,
+        gitsigns = true,
+        treesitter = true,
+        }
+      })
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
@@ -76,6 +83,17 @@ return {
 			local cmp = require("cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			cmp.setup(opts)
+		end,
+	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+		event = buf_open_events,
+		opts = function()
+			return require("sheke.plugins.config.gitsigns")
+		end,
+		config = function(_, opts)
+			require("gitsigns").setup(opts)
 		end,
 	},
 }
