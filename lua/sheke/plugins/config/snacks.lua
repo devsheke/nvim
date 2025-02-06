@@ -3,7 +3,6 @@ local M = {}
 M.opts = {
 	bigfile = { enabled = true, notify = true },
 	bufdelete = { enabled = true },
-	explorer = { enabled = true, replace_netrw = true },
 	git = { enabled = true },
 	indent = {
 		enabled = true,
@@ -17,6 +16,12 @@ M.opts = {
 		prompt_pos = "title",
 		win = { style = "input" },
 		expand = true,
+	},
+	notifier = {
+		enabled = true,
+		filter = function(notif)
+			return not string.find(notif.msg, "written")
+		end,
 	},
 	lazygit = { enabled = true },
 	quickfile = { enabled = true },
@@ -68,13 +73,6 @@ M.keys = {
 			Snacks.picker.notifications()
 		end,
 		desc = "Notification History",
-	},
-	{
-		"<leader>e",
-		function()
-			Snacks.explorer()
-		end,
-		desc = "File Explorer",
 	},
 	{
 		"<leader>fa",
