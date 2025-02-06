@@ -13,6 +13,16 @@ M.window = {
 	documentation = cmp.config.window.bordered(),
 }
 
+M.formatting = {
+	fields = { "abbr", "kind", "menu" },
+	format = require("lspkind").cmp_format({
+		mode = "symbol_text",
+		maxwidth = 50,
+		ellipsis_char = "...",
+		show_labelDetails = true,
+	}),
+}
+
 M.mapping = cmp.mapping.preset.insert({
 	["<C-p>"] = cmp.mapping.select_prev_item(),
 	["<C-n>"] = cmp.mapping.select_next_item(),
