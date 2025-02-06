@@ -107,6 +107,14 @@ return {
 	},
 
 	{
+		"stevearc/conform.nvim",
+		opts = require("sheke.plugins.config.conform"),
+		config = function(_, opts)
+			require("conform").setup(opts)
+		end,
+	},
+
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
