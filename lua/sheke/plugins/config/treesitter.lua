@@ -15,7 +15,6 @@ M.ensure_installed = {
 	"make",
 	"markdown",
 	"nix",
-	"norg",
 	"python",
 	"rust",
 	"sql",
