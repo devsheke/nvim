@@ -6,13 +6,13 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-      require("catppuccin").setup({
-        integrations = {
-        cmp = true,
-        gitsigns = true,
-        treesitter = true,
-        }
-      })
+			require("catppuccin").setup({
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					treesitter = true,
+				},
+			})
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
@@ -94,6 +94,15 @@ return {
 		end,
 		config = function(_, opts)
 			require("gitsigns").setup(opts)
+		end,
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = require("sheke.plugins.config.lualine"),
+		config = function(_, opts)
+			require("lualine").setup(opts)
 		end,
 	},
 }
