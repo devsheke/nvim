@@ -2,18 +2,10 @@ local buf_open_events = { "BufReadPost", "BufNewFile" }
 
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
+		"rose-pine/neovim",
+		name = "rose-pine",
 		config = function()
-			require("catppuccin").setup({
-				integrations = {
-					cmp = true,
-					gitsigns = true,
-					treesitter = true,
-				},
-			})
-			vim.cmd.colorscheme("catppuccin-mocha")
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 

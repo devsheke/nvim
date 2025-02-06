@@ -1,30 +1,19 @@
 local colors = {
-	rosewater = "#f5e0dc",
-	flamingo = "#f2cdcd",
-	pink = "#f5c2e7",
-	mauve = "#cba6f7",
-	red = "#f38ba8",
-	maroon = "#eba0ac",
-	peach = "#fab387",
-	yellow = "#f9e2af",
-	green = "#a6e3a1",
-	teal = "#94e2d5",
-	sky = "#89dceb",
-	sapphire = "#74c7ec",
-	blue = "#89b4fa",
-	lavender = "#b4befe",
-	text = "#cdd6f4",
-	subtext1 = "#bac2de",
-	subtext0 = "#a6adc8",
-	overlay2 = "#9399b2",
-	overlay1 = "#7f849c",
-	overlay0 = "#6c7086",
-	surface2 = "#585b70",
-	surface1 = "#45475a",
-	surface0 = "#313244",
-	base = "#1e1e2e",
-	mantle = "#181825",
-	crust = "#11111b",
+	base = "#191724",
+	surface = "#1f1d2e",
+	overlay = "#26233a",
+	muted = "#6e6a86",
+	subtle = "#908caa",
+	text = "#e0def4",
+	love = "#eb6f92",
+	gold = "#f6c177",
+	rose = "#ebbcba",
+	pine = "#31748f",
+	foam = "#9ccfd8",
+	iris = "#c4a7e7",
+	highlightLow = "#21202e",
+	highlightMed = "#403d52",
+	highlightHigh = "#524f67",
 }
 
 local conditions = {
@@ -46,8 +35,8 @@ local options = {
 		component_separators = "",
 		section_separators = "",
 		theme = {
-			normal = { c = { fg = colors.text, bg = colors.mantle } },
-			inactive = { c = { fg = colors.text, bg = colors.mantle } },
+			normal = { c = { fg = colors.text, bg = colors.overlay } },
+			inactive = { c = { fg = colors.text, bg = colors.surface } },
 		},
 	},
 	sections = {
@@ -85,32 +74,31 @@ ins_left({
 })
 
 local mode_color = {
-	n = colors.red,
-	i = colors.green,
-	v = colors.mauve,
-	[""] = colors.lavender,
-	V = colors.sapphire,
-	c = colors.pink,
-	no = colors.flamingo,
-	s = colors.yellow,
-	S = colors.yellow,
-	[""] = colors.yellow,
-	ic = colors.yellow,
-	R = colors.red,
-	Rv = colors.red,
-	cv = colors.red,
-	ce = colors.red,
-	r = colors.rosewater,
-	rm = colors.rosewater,
-	["r?"] = colors.rosewater,
-	["!"] = colors.flamingo,
-	t = colors.flamingo,
+	n = colors.foam,
+	no = colors.foam,
+	i = colors.rose,
+	ic = colors.rose,
+	v = colors.iris,
+	[""] = colors.iris,
+	V = colors.iris,
+	c = colors.gold,
+	cv = colors.gold,
+	ce = colors.gold,
+	s = colors.muted,
+	S = colors.muted,
+	[""] = colors.muted,
+	R = colors.love,
+	Rv = colors.love,
+	r = colors.gold,
+	rm = colors.gold,
+	["r?"] = colors.gold,
+	["!"] = colors.gold,
 }
 
 ins_left({
 	"mode",
 	color = function()
-		return { bg = mode_color[vim.fn.mode()], fg = colors.mantle, gui = "bold" }
+		return { bg = mode_color[vim.fn.mode()], fg = colors.base, gui = "bold" }
 	end,
 	padding = { left = 1 },
 })
@@ -128,24 +116,38 @@ ins_left({
 ins_left({
 	"filename",
 	cond = conditions.buffer_not_empty,
-	color = { fg = colors.sky, gui = "bold" },
+	color = { fg = colors.iris, gui = "bold" },
+})
+
+ins_left({
+	function()
+		return ""
+	end,
+	padding = { right = 1, left = 0 },
 })
 
 ins_left({
 	"branch",
 	icon = "",
-	color = { fg = colors.red, gui = "bold" },
+	color = { fg = colors.love, gui = "bold" },
 })
 
 ins_left({
 	"diff",
 	symbols = { added = " ", modified = "󰝤 ", removed = " " },
 	diff_color = {
-		added = { fg = colors.peach },
-		modified = { fg = colors.peach },
-		removed = { fg = colors.flamingo },
+		added = { fg = colors.foam },
+		modified = { fg = colors.gold },
+		removed = { fg = colors.rose },
 	},
 	cond = conditions.hide_in_width,
+})
+
+ins_left({
+	function()
+		return ""
+	end,
+	padding = { right = 0, left = 1 },
 })
 
 ins_left({
@@ -153,10 +155,17 @@ ins_left({
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", info = " " },
 	diagnostics_color = {
-		color_error = { fg = colors.red },
-		color_warn = { fg = colors.yellow },
-		color_info = { fg = colors.green },
+		color_error = { fg = colors.love },
+		color_warn = { fg = colors.gold },
+		color_info = { fg = colors.pine },
 	},
+})
+
+ins_right({
+	"o:encoding",
+	cond = conditions.hide_in_width,
+	color = { fg = colors.muted, gui = "bold" },
+	padding = { right = 2 },
 })
 
 ins_right({
@@ -176,13 +185,8 @@ ins_right({
 		return msg
 	end,
 	icon = " :",
-	color = { fg = colors.sapphire, gui = "bold" },
-})
-
-ins_right({
-	"o:encoding",
-	cond = conditions.hide_in_width,
-	color = { fg = colors.overlay0, gui = "bold" },
+	color = { fg = colors.foam, gui = "bold" },
+	padding = { left = 1 },
 })
 
 ins_right({ "location" })
@@ -191,8 +195,8 @@ ins_right({
 	function()
 		return "▊"
 	end,
-	color = { fg = colors.teal },
-	padding = { left = 1 },
+	color = { fg = colors.foam },
+	padding = { right = 0 },
 })
 
 return options
