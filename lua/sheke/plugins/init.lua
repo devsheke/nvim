@@ -2,6 +2,14 @@ local buf_open_events = { "BufReadPost", "BufNewFile" }
 
 return {
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		event = buf_open_events,
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
