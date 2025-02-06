@@ -105,4 +105,25 @@ return {
 			require("lualine").setup(opts)
 		end,
 	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		opts = require("sheke.plugins.config.noice"),
+		config = function(opts)
+			require("noice").setup(opts)
+		end,
+	},
+
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = require("sheke.plugins.config.snacks").opts,
+		keys = require("sheke.plugins.config.snacks").keys,
+	},
 }
