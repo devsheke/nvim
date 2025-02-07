@@ -25,7 +25,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			return require("sheke.plugins.config.lspconfig")
+			return require("sheke.plugins.config.lspconfig"):defaults()
 		end,
 	},
 
@@ -74,10 +74,7 @@ return {
 			return require("sheke.plugins.config.cmp")
 		end,
 		config = function(_, opts)
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-			cmp.setup(opts)
+			require("cmp").setup(opts)
 		end,
 	},
 
@@ -116,7 +113,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		opts = require("sheke.plugins.config.noice"),
-		config = function(opts)
+		config = function(_, opts)
 			require("noice").setup(opts)
 		end,
 	},
