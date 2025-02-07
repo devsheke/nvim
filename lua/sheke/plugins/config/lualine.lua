@@ -136,7 +136,7 @@ ins_left({
 	color = { fg = colors.iris, gui = "bold" },
 })
 
-add_seperator("left", conditions.buffer_not_empty)
+add_seperator("left", conditions.check_git_workspace)
 
 ins_left({
 	"branch",
