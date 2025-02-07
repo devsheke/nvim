@@ -1,5 +1,23 @@
 local M = {}
 
+M.cmdline = {
+	view = "cmdline",
+	format = {
+		cmdline = { pattern = "^:", icon = "", lang = "vim" },
+		search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+		search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+		filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+		lua = {
+			pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+			icon = "",
+			lang = "lua",
+		},
+		help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+		input = { view = "cmdline", icon = "󰥻 " }, -- Used by input()
+		-- lua = false, -- to disable a format, set to `false`
+	},
+}
+
 M.lsp = {
 	-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 	override = {
