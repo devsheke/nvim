@@ -31,7 +31,7 @@ return {
 
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
-	{ "onsails/lspkind.nvim" },
+	{ "onsails/lspkind.nvim", lazy = true },
 
 	{
 		"hrsh7th/nvim-cmp",
@@ -100,6 +100,7 @@ return {
 
 	{
 		"stevearc/conform.nvim",
+		event = buf_open_events,
 		opts = require("sheke.plugins.config.conform"),
 		config = function(_, opts)
 			require("conform").setup(opts)

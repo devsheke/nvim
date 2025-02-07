@@ -22,6 +22,47 @@ M.opts = {
 	statuscolumn = { enabled = true },
 }
 
+M.opts.dashboard = {
+	enabled = true,
+	preset = {
+		header = [[
+                     /$$                  /$$              
+                    | $$                 |__/              
+  /$$$$$$$  /$$$$$$$| $$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$ 
+ /$$_____/ /$$_____/| $$__  $$|  $$  /$$/| $$| $$_  $$_  $$
+|  $$$$$$ | $$      | $$  \ $$ \  $$/$$/ | $$| $$ \ $$ \ $$
+ \____  $$| $$      | $$  | $$  \  $$$/  | $$| $$ | $$ | $$
+ /$$$$$$$/|  $$$$$$$| $$  | $$   \  $/   | $$| $$ | $$ | $$
+|_______/  \_______/|__/  |__/    \_/    |__/|__/ |__/ |__/]],
+	},
+	pane_gap = 20,
+	sections = {
+		{ section = "header", text = "hello" },
+		{
+			section = "terminal",
+			cmd = "chafa ~/Pictures/cat.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1",
+			height = 20,
+			padding = 1,
+		},
+		{ pane = 2, title = "Bookmarks", icon = "", padding = 1 },
+		{
+			pane = 2,
+			section = "keys",
+			gap = 1,
+			padding = 1,
+		},
+		{ pane = 2, title = "Recents", icon = "", padding = { 1, 2 } },
+		{
+			pane = 2,
+			section = "recent_files",
+			gap = 1,
+			padding = 2,
+		},
+
+		{ pane = 2, section = "startup", icon = "⚡⚡ " },
+	},
+}
+
 local picker_layouts = {
 	telescope = {
 		reverse = true,
