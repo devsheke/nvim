@@ -8,15 +8,7 @@ M.opts = {
 		enabled = true,
 		animate = { enabled = false },
 	},
-	input = {
-		enabled = true,
-		icon = "",
-		icon_hl = "SnacksInputIcon",
-		icon_pos = "left",
-		prompt_pos = "title",
-		win = { style = "input" },
-		expand = true,
-	},
+	input = { enabled = false },
 	notifier = {
 		enabled = true,
 		filter = function(notif)
@@ -87,7 +79,6 @@ M.opts.picker = {
 	enabled = true,
 	layout = {
 		preset = "telescope", -- defaults to this layout unless overidden
-		cycle = false,
 	},
 	layouts = picker_layouts,
 	sources = {
