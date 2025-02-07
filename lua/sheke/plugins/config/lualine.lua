@@ -28,6 +28,9 @@ local conditions = {
 		local gitdir = vim.fn.finddir(".git", filepath .. ";")
 		return gitdir and #gitdir > 0 and #gitdir < #filepath
 	end,
+	check_diagnostics_available = function()
+		return #vim.diagnostic.get(0) > 0
+	end,
 }
 
 local options = {
@@ -136,7 +139,10 @@ ins_left({
 	color = { fg = colors.iris, gui = "bold" },
 })
 
-add_seperator("left", conditions.check_git_workspace)
+add_seperator("left", function()
+	return conditions.buffer_not_empty()
+		and (conditions.check_git_workspace() or conditions.check_diagnostics_available())
+end)
 
 ins_left({
 	"branch",
@@ -156,7 +162,7 @@ ins_left({
 })
 
 add_seperator("left", function()
-	return #vim.diagnostic.get(0) > 0
+	return conditions.check_git_workspace() and conditions.check_diagnostics_available()
 end)
 
 ins_left({
