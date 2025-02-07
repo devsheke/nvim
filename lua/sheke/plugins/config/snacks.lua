@@ -30,6 +30,75 @@ M.opts = {
 	statuscolumn = { enabled = true },
 }
 
+local picker_layouts = {
+	telescope = {
+		reverse = true,
+		layout = {
+			box = "horizontal",
+			backdrop = false,
+			width = 0.8,
+			height = 0.9,
+			border = "none",
+			{
+				box = "vertical",
+				{ win = "list", title = " Results ", title_pos = "center", border = "rounded" },
+				{
+					win = "input",
+					height = 1,
+					border = "rounded",
+					title = "{title} {live} {flags}",
+					title_pos = "center",
+				},
+			},
+			{
+				win = "preview",
+				title = "{preview:Preview}",
+				width = 0.50,
+				border = "rounded",
+				title_pos = "center",
+			},
+		},
+	},
+
+	vscode = {
+		preview = false,
+		layout = {
+			backdrop = false,
+			row = 10,
+			width = 0.4,
+			min_width = 80,
+			height = 0.4,
+			border = "rounded",
+			box = "vertical",
+			{
+				win = "input",
+				height = 1,
+				border = "rounded",
+				title = "{title} {live} {flags}",
+				title_pos = "center",
+			},
+			{ win = "list", border = "hpad" },
+			{ win = "preview", title = "{preview}", border = "rounded" },
+		},
+	},
+}
+
+M.opts.picker = {
+	enabled = true,
+	layout = {
+		preset = "telescope", -- defaults to this layout unless overidden
+		cycle = false,
+	},
+	layouts = picker_layouts,
+	sources = {
+		buffers = {
+			layout = {
+				preset = "vscode",
+			},
+		},
+	},
+}
+
 M.keys = {
 	{
 		"<leader>lg",
