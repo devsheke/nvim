@@ -90,6 +90,7 @@ M.sources = cmp.config.sources({
 }, {
 	{ name = "path" },
 	{ name = "buffer" },
+	{ name = "neorg" },
 })
 
 return M
