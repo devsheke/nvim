@@ -155,7 +155,9 @@ ins_left({
 	cond = conditions.hide_in_width,
 })
 
-add_seperator("left")
+add_seperator("left", function()
+	return #vim.diagnostic.get(0) > 0
+end)
 
 ins_left({
 	"diagnostics",
