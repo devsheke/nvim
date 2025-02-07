@@ -65,6 +65,23 @@ local function ins_right(component)
 	table.insert(options.sections.lualine_x, component)
 end
 
+local function add_seperator(pos, cond)
+	local sep = {
+		function()
+			return "|"
+		end,
+		cond = cond,
+		color = { fg = colors.highlightHigh },
+		padding = { left = 1, right = 1 },
+	}
+
+	if pos == "right" then
+		ins_right(sep)
+	elseif pos == "left" then
+		ins_left(sep)
+	end
+end
+
 ins_left({
 	function()
 		return "▊"
@@ -119,12 +136,7 @@ ins_left({
 	color = { fg = colors.iris, gui = "bold" },
 })
 
-ins_left({
-	function()
-		return ""
-	end,
-	padding = { right = 1, left = 0 },
-})
+add_seperator("left", conditions.buffer_not_empty)
 
 ins_left({
 	"branch",
@@ -143,12 +155,7 @@ ins_left({
 	cond = conditions.hide_in_width,
 })
 
-ins_left({
-	function()
-		return ""
-	end,
-	padding = { right = 0, left = 1 },
-})
+add_seperator("left")
 
 ins_left({
 	"diagnostics",
@@ -165,8 +172,10 @@ ins_right({
 	"o:encoding",
 	cond = conditions.hide_in_width,
 	color = { fg = colors.muted, gui = "bold" },
-	padding = { right = 2 },
+	padding = { right = 1 },
 })
+
+add_seperator("right", conditions.hide_in_width)
 
 ins_right({
 	function()
@@ -186,8 +195,10 @@ ins_right({
 	end,
 	icon = " :",
 	color = { fg = colors.foam, gui = "bold" },
-	padding = { left = 1 },
+	padding = { left = 1, right = 1 },
 })
+
+add_seperator("right")
 
 ins_right({ "location" })
 
