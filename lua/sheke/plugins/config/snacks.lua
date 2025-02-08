@@ -40,7 +40,7 @@ M.opts.dashboard = {
 		{ section = "header", text = "hello" },
 		{
 			section = "terminal",
-			cmd = "chafa ~/Pictures/cat.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1",
+			cmd = "chafa ~/Pictures/cats.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1",
 			height = 20,
 			padding = 1,
 		},
