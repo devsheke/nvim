@@ -1,8 +1,10 @@
 local M = {}
 
 M.formatters_by_ft = {
+	astro = { "prettierd" },
 	lua = { "stylua" },
 	go = { "gofmt", "goimports-reviser", "golines" },
+	json = { "prettierd" },
 	javascript = { "prettierd" },
 	javascriptreact = { "prettierd" },
 	typescript = { "prettierd" },

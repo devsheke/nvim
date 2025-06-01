@@ -2,6 +2,7 @@ local cmp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
 
 local lang_servers = {
+	"astro",
 	"bashls",
 	"clangd",
 	"cssls",
@@ -124,6 +125,7 @@ M.defaults = function(self)
 				experimental = {
 					classregex = {
 						{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+						{ "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
 						{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
 						{ "twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
 					},
