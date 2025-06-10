@@ -1,13 +1,12 @@
-local opt = vim.opt
-local o = vim.o
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.opt.shortmess.F = true
-vim.opt.shortmess.W = true
-vim.opt.shortmess.c = true
-vim.opt.shortmess.I = true
+local opt = vim.opt
+
+opt.shortmess.F = true
+opt.shortmess.W = true
+opt.shortmess.c = true
+opt.shortmess.I = true
 
 opt.nu = true
 opt.relativenumber = true
@@ -19,6 +18,10 @@ opt.scrolloff = 4
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 opt.guicursor = ""
+
+opt.whichwrap:append("<>[]hl")
+
+local o = vim.o
 
 o.clipboard = "unnamedplus"
 o.cursorline = true
@@ -44,5 +47,3 @@ o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
-
-opt.whichwrap:append("<>[]hl")

@@ -62,3 +62,5 @@ map(
 	"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 	{ desc = "Toggle Trouble lsp references" }
 )
+
+map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
