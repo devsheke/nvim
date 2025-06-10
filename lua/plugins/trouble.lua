@@ -1,5 +1,5 @@
 return {
 	"folke/trouble.nvim",
 	cmd = "Trouble",
-	opts = { focus = true, icons = false },
+	opts = { focus = true },
 }
