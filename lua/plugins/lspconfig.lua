@@ -1,7 +1,23 @@
 local lsp = {}
 
 lsp.servers = {
+	"basedpyright",
+	"bashls",
+	"clangd",
+	"cssls",
+	"dockerls",
+	"eslint",
+	"golangci_lint_ls",
+	"gopls",
+	"html",
+	"jsonls",
 	"lua_ls",
+	"nil_ls",
+	"rust_analyzer",
+	"svelte",
+	"tailwindcss",
+	"taplo",
+	"ts_ls",
 }
 
 lsp.capabilites = vim.lsp.protocol.make_client_capabilities()
@@ -63,7 +79,8 @@ return {
 		for _, lsp_name in ipairs(lsp.servers) do
 			local status, config = pcall(require, "config.lsp." .. lsp_name)
 			if not status then
-				print("Failed to load config for lsp: " .. lsp_name)
+				vim.lsp.config(lsp_name, {})
+				vim.lsp.enable(lsp_name)
 			else
 				config:default()
 			end
