@@ -13,7 +13,7 @@ local options = {
 		completion = {
 			scrollbar = false,
 			side_padding = 1,
-			winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None,FloatBorder:CmpBorder",
+			winhighlight = "Normal:CmpPmenu,CursorLine:Visual,Search:None,FloatBorder:CmpBorder",
 			border = "single",
 		},
 
