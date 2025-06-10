@@ -1,0 +1,40 @@
+return {
+	"nvim-treesitter/nvim-treesitter",
+	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+	build = ":TSUpdate",
+	opts = {
+		ensure_installed = {
+			"bash",
+			"c",
+			"css",
+			"diff",
+			"dockerfile",
+			"gitcommit",
+			"go",
+			"html",
+			"javascript",
+			"json",
+			"lua",
+			"make",
+			"markdown",
+			"nix",
+			"python",
+			"rust",
+			"sql",
+			"svelte",
+			"templ",
+			"toml",
+			"typescript",
+			"yaml",
+		},
+		highlight = {
+			enable = true,
+			use_languagetree = true,
+		},
+		indent = { enable = true },
+	},
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
+}
