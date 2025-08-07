@@ -66,7 +66,6 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
@@ -79,7 +78,6 @@ return {
 		for _, lsp_name in ipairs(lsp.servers) do
 			local status, config = pcall(require, "config.lsp." .. lsp_name)
 			if not status then
-				vim.lsp.config(lsp_name, {})
 				vim.lsp.enable(lsp_name)
 			else
 				config:default()
