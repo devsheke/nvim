@@ -46,11 +46,18 @@ lsp.on_attach = function(_, bufrn)
 		return { buffer = bufrn, desc = "LSP " .. desc }
 	end
 
-	map("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-	map("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
-	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
-	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
-
+	map("n", "gD", vim.lsp.buf.declaration, opts("go to declaration"))
+	map("n", "gd", vim.lsp.buf.definition, opts("go to definition"))
+	map("n", "K", vim.lsp.buf.hover, opts("hover information"))
+	map("n", "gi", vim.lsp.buf.implementation, opts("go to implementation"))
+	map("n", "<leader>sh", vim.lsp.buf.signature_help, opts("show signature help"))
+	map("n", "<leader>rn", vim.lsp.buf.rename, opts("rename symbol"))
+	map("n", "<leader>d", vim.lsp.buf.type_definition, opts("go to type definition"))
+	map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("code action"))
+	map("n", "gr", vim.lsp.buf.references, opts("show references"))
+	map("n", "<leader>vd", vim.diagnostic.open_float, opts("open diagnostics float"))
+	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("add workspace folder"))
+	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("remove workspace folder"))
 	map("n", "<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, opts("List workspace folders"))
